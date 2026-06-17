@@ -1,5 +1,6 @@
 import yfinance as yf
 import pandas as pd
+import os
 
 # Fetch data (Nasdaq futures proxy)
 symbol = "NQ=F"
@@ -11,7 +12,8 @@ df = yf.download(symbol, interval="5m", period="5d")
 df = df.tail(200)
 
 # Save to CSV
-filename = "nq_data.csv"
+windows_path = "/mnt/c/Users/lhord/OneDrive/Desktop"
+filename = os.path.join(windows_path, "nq_data.csv")
 df.to_csv(filename)
 
 print(f"Saved to {filename}")
